@@ -40,21 +40,8 @@ print(train_images[0][0][:3])
 print("\nPrimer nekoliko izgleda oblika ulaznih labela:")
 print(train_labels[:5])
 
-
 num_classes = len(class_names)
 train_images_shape = train_images.shape[1:]
-
-
-def sample_plot(images, labels, n):
-    fig, axes = plt.subplots(1, n, figsize=(n * 4, 4))
-    for i in range(n):
-        axes[i].imshow(images[i])
-        label_index = int(labels[i])
-        axes[i].set_xlabel(class_names[label_index], fontsize=13)
-
-
-sample_plot(train_images, train_labels, 3)
-plt.show()
 
 cnn = models.Sequential(
     [
