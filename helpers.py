@@ -1,19 +1,18 @@
-def sample_plot(images, labels, n):
+def sample_plot(images, labels, n, cmap=None):
     fig, axes = plt.subplots(1, n, figsize=(n * 4, 4))
     for i in range(n):
-        axes[i].imshow(images[i])
+        axes[i].imshow(images[i], cmap=cmap)
         label_index = int(labels[i])
         axes[i].set_xlabel(class_names[label_index], fontsize=13)
 
 
 def grayscale(images):
-    preprocessed_images = []
+    grayscale_images = []
     for image in images:
-        image_uint8 = np.uint8(image * 255)
+        image_uint8 = np.uint8(image)
         grayscale_image = cv2.cvtColor(image_uint8, cv2.COLOR_RGB2GRAY)
-        preprocessed_images.append(grayscale_image)
-    return np.array(preprocessed_images)
-
+        grayscale_images.append(grayscale_image)
+    return np.array(grayscale_images)
 
 def augment(images):
     augmented_images = []
